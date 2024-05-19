@@ -7,6 +7,7 @@
     <title>Student data</title>
     <link rel="stylesheet" href="data.css">
     <?php
+    session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -20,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $college =$_POST['college'];
     $faculty =$_POST['faculty'];
     $city = $_POST['city'];
+    //$uname = $_SESSION['username'];
+
     if(empty($rollno)) {
         $error_rollno = "Roll no. is required";
     }
@@ -109,8 +112,8 @@ $conn->close();
             <h2>ENTER DATA</h2>
             <input type="text" name="rollno"placeholder="Enter roll number"class="box">
             <label style="color: red;margin-left:-150px;"><?php echo $error_rollno ?></label>
-
-            <input type="text"name="name"placeholder="Enter name"class="box">
+            <h1>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+            <input type="text"name="name"placeholder="Enter name"class="box" value=<?php echo htmlspecialchars($_SESSION['username']); ?>>
             <label style="color: red;margin-left:-150px;"><?php echo $error_name ?></label>
 
             <input type="text" name="mobno"placeholder="Enter mobile number"class="box" >
