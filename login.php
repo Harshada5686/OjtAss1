@@ -63,7 +63,7 @@
    <div class="container">
     <form action="" class="form" method="POST">
       <h2>LOGIN</h2>
-      <input type="text" name="username" class="box" placeholder="Enter name">
+      <input type="text" name="username" class="box" placeholder="Enter username">
       <label style="color: red;margin-left:-100px;"><?php echo $error_username ?></label>
       <input type="password" name="password" class="box" placeholder="Enter password">
       <label style="color: red;margin-left:-100px;"><?php echo $error_password ?></label>

@@ -62,45 +62,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         {
             if ($_SERVER["REQUEST_METHOD"] == "POST")
              {
-                $sql = "INSERT INTO data (roll, name, mobile,city,collegeName,faculty) VALUES ('$rollno', '$name', '$mobno','$city','$college','$faculty')";
+                $sql = "UPDATE data 
+                SET name = '$name', Mob_no = '$mobno', City = '$city', College = '$college', Faculty ='$faculty' WHERE Roll_no = '$rollno'";
                 if ($conn->query($sql) === TRUE) 
                 {
                     echo '<script type="text/javascript">';
                     echo ' alert("Data updated successfully!!")';  //not showing an alert box.
                     echo '</script>';
-                    header("Location: marks.php");
-                    exit();
                 } else {
                     echo '<script type="text/javascript">';
                     echo ' alert("faild")';  
                     echo '</script>';
                 } }
-        }else if (isset($_POST["DELETE"])) 
+        }else 
         {
             if ($_SERVER["REQUEST_METHOD"] == "POST")
             {
                 $roll_number_to_delete = $_POST['rollno']; 
-                $sql = "DELETE FROM data WHERE roll= '$roll_number_to_delete'";
+                $sql = "DELETE FROM data WHERE Roll_no= '$roll_number_to_delete'";
                 if (mysqli_query($conn, $sql)) {
                     echo '<script type="text/javascript">';
                     echo ' alert("Record deleted successfully!!")';  
                     echo '</script>';
-                    header("Location: marks.php");
-                    exit();
                 } else {
                     echo '<script type="text/javascript">';
                     echo ' alert("Error deleting record!!")';
                     echo '</script>';
                 }}
-        }else if (isset($_POST["NEXT"])) {
-            echo '<script type="text/javascript">';
-            echo ' alert("Data Saved")'; 
-            echo '</script>';
-        }else
-        {
-            echo '<script type="text/javascript">';
-            echo ' alert("Data save")';  
-            echo '</script>';
         }}}
 $conn->close();
 ?>
@@ -112,7 +100,7 @@ $conn->close();
             <h2>ENTER DATA</h2>
             <input type="text" name="rollno"placeholder="Enter roll number"class="box">
             <label style="color: red;margin-left:-150px;"><?php echo $error_rollno ?></label>
-            <input type="text"name="name"placeholder="Enter name"class="box" value=<?php echo htmlspecialchars($_SESSION['username']); ?>>
+            <input type="text"name="name"placeholder="Enter full name"class="box">
             <label style="color: red;margin-left:-150px;"><?php echo $error_name ?></label>
 
             <input type="text" name="mobno"placeholder="Enter mobile number"class="box" >
@@ -130,11 +118,11 @@ $conn->close();
             <label style="color: red;margin-left:-110px;"><?php echo $error_college ?></label>
             <input type="text"name="faculty"placeholder="Enter faculty"class="box">
             <label style="color: red;margin-left:-110px;"><?php echo $error_faculty?></label>
-            <input type="submit"value="INSERT" name="INSERT" id="button">
+            <input type="submit"value="NEXT" name="INSERT" id="button">
             <input type="submit"value="UPDATE" name="UPDATE" id="button">
             <input type="submit"value="DELETE" name="DELETE" id="button">
-            <input type="submit"value="NEXT" name="NEXT" id="button">
-            <input type="submit"value="SAVE" name="SAVE" id="button">
+            <!-- <input type="submit"value="NEXT" name="NEXT" id="button"> -->
+            <!-- <input type="submit"value="SAVE" name="SAVE" id="button"> -->
         </form>
         <div class="image">
             <img src="chris-lee-70l1tDAI6rM-unsplash 1.png" alt="image">
@@ -142,3 +130,5 @@ $conn->close();
     </div>
 </body>
 </html>
+
+<!-- <?php echo htmlspecialchars($_SESSION['username']); ?> -->
