@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //$uname = $_SESSION['username'];
 
     if(empty($rollno)) {
+        $_SESSION['rollno'] = $rollno;
         $error_rollno = "Roll no. is required";
     }
     if(empty($name)) {
@@ -94,12 +94,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }}
         }else if (isset($_POST["NEXT"])) {
             echo '<script type="text/javascript">';
-            echo ' alert("update data")'; 
+            echo ' alert("Data Saved")'; 
             echo '</script>';
         }else
         {
             echo '<script type="text/javascript">';
-            echo ' alert("update data")';  
+            echo ' alert("Data save")';  
             echo '</script>';
         }}}
 $conn->close();
@@ -112,7 +112,6 @@ $conn->close();
             <h2>ENTER DATA</h2>
             <input type="text" name="rollno"placeholder="Enter roll number"class="box">
             <label style="color: red;margin-left:-150px;"><?php echo $error_rollno ?></label>
-            <h1>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
             <input type="text"name="name"placeholder="Enter name"class="box" value=<?php echo htmlspecialchars($_SESSION['username']); ?>>
             <label style="color: red;margin-left:-150px;"><?php echo $error_name ?></label>
 
