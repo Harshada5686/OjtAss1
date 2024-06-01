@@ -18,9 +18,7 @@
         $error_username = $error_password = ""; 
        
         if ($_SERVER["REQUEST_METHOD"] == "POST")  {
-            // if(empty($_POST['username'])) {
-            //     $error_username = "Username is required";
-            // }
+           
             if(empty($_POST['username'])) 
             {
                 $error_username = "Username is required";
@@ -41,7 +39,8 @@
                      $sql = "SELECT * FROM registration WHERE username = '$username'";
                      $result = mysqli_query($conn, $sql);
                      $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                     if ($user)  {
+                     if ($user) 
+                      {
                          if ($password === $user["password"]) {
                         $_SESSION['username'] = $username;
                            echo "<script> alert('Login Successfully!!');</script>";

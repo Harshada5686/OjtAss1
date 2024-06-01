@@ -24,6 +24,8 @@
     </style>
     <link rel="stylesheet" href="marks.css">
     <?php
+    session_start();
+
         $error_name = $error_rollno =$error_physics = $error_chemistry = $error_mathematics =$error_geography =$error_marathi =$error_english=""; // Initialize error variables
             if ($_SERVER["REQUEST_METHOD"] == "POST") 
             {               
@@ -38,6 +40,7 @@
                     $marathi = $_POST['marathi'];
                     $english = $_POST['english'];
                     if(empty($roll)) {
+
                         $error_rollno = "Roll no. is required";
                     }                             
                     if(empty($name)) {
@@ -67,7 +70,7 @@
     <div class="container"> 
         <form action="" class="form" method="POST">
         <h2>Enter Marks</h2>
-            <input type="text" name="rollno"placeholder="Enter roll number"class="box">
+            <input type="text" name="rollno"placeholder="Enter roll number"class="box" value=<?php echo htmlspecialchars($_SESSION['rollno']); ?>>
             <label style="color: red;margin-left:-110px;"><?php echo $error_rollno ?></label>
             <input type="text"name="name"placeholder="Enter name"class="box">
             <label style="color: red;margin-left:-120px;"><?php echo $error_name ?></label>
