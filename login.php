@@ -43,7 +43,7 @@
                      $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
                      if ($user)  {
                          if ($password === $user["password"]) {
-                        $_SESSION['username'] = $username;
+                           $_SESSION['username'] = $username;
                            echo "<script> alert('Login Successfully!!');</script>";
                            header('Location: data.php');
                            exit();
