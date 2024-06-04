@@ -70,9 +70,9 @@
     <div class="container"> 
         <form action="" class="form" method="POST">
         <h2>Enter Marks</h2>
-            <input type="text" name="rollno"placeholder="Enter roll number"class="box" value=<?php echo htmlspecialchars($_SESSION['rollno']); ?>>
+            <input type="text" name="rollno"placeholder="Enter roll number"class="box" value=<?php echo htmlspecialchars($_SESSION['Rollno']); ?>>
             <label style="color: red;margin-left:-110px;"><?php echo $error_rollno ?></label>
-            <input type="text"name="name"placeholder="Enter name"class="box">
+            <input type="text"name="name"placeholder="Enter name"class="box" value=<?php echo $_SESSION['Name']; ?>>
             <label style="color: red;margin-left:-120px;"><?php echo $error_name ?></label>
             <input type="text" name="physics" placeholder="PHYSICS" class="box">
             <label style="color: red;margin-left:-70px;"><?php echo $error_physics ?></label>

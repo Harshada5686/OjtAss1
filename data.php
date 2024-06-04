@@ -47,7 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
              {
                 $sql = "INSERT INTO data (Roll_no, Name	, Mob_no,City,College,Faculty) VALUES ('$rollno', '$name', '$mobno','$city','$college','$faculty')";
                 if ($conn->query($sql) === TRUE) 
-                {
+                {                           
+                    $_SESSION['Rollno'] = $rollno;
+                    $_SESSION['Name'] =$name;
                     echo '<script type="text/javascript">';
                     echo ' alert("Data inserted successfully!!")';  //not showing an alert box.
                     echo '</script>';
@@ -116,7 +118,18 @@ $conn->close();
             <label style="color: red;margin-left:-110px;"><?php echo $error_city ?></label>
             <input type="text"name="college"placeholder="Enter collge name"class="box">
             <label style="color: red;margin-left:-110px;"><?php echo $error_college ?></label>
-            <input type="text"name="faculty"placeholder="Enter faculty"class="box">
+            <!-- <input type="text"name="faculty"placeholder="Enter faculty"class="box"> -->
+            <select name="faculty" id="faculty" class="box">
+              <option value="nashik">Select Faculty</option>
+
+              <option value="nashik">Computer Science</option>
+              <option value="nashik">Botany</option>
+              <option value="pimpalgoan">Zoology</option>
+              <option value="pune">Chemestry</option>
+              <option value="rnwad">Physics</option>
+              <option value="rnwad">Mathematics</option>
+
+            </select>
             <label style="color: red;margin-left:-110px;"><?php echo $error_faculty?></label>
             <input type="submit"value="NEXT" name="INSERT" id="button">
             <input type="submit"value="UPDATE" name="UPDATE" id="button">
